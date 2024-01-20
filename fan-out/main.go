@@ -14,12 +14,12 @@ var (
 // Be careful on high RPS
 func work(w int) string {
 	time.Sleep(time.Duration(rand.Intn(200)) * time.Millisecond)
-
 	return fmt.Sprintf("result from worker %d", w)
 }
 
 func main() {
 	ch := make(chan string, workers)
+	defer close(ch)
 
 	for w := 0; w < workers; w++ {
 		w := w
@@ -36,6 +36,4 @@ func main() {
 
 		workers--
 	}
-
-	close(ch)
 }
