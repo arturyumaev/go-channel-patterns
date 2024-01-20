@@ -10,6 +10,8 @@ var (
 	workers = 2000
 )
 
+// CPU bound workload
+// Be careful on high RPS
 func work(w int) string {
 	time.Sleep(time.Duration(rand.Intn(200)) * time.Millisecond)
 

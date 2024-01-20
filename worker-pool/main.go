@@ -15,7 +15,6 @@ func main() {
 	wg.Add(tasksNum)
 
 	tasksCh := make(chan int)
-
 	workers := runtime.NumCPU()
 
 	for w := 0; w < workers; w++ {
